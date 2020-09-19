@@ -1,6 +1,11 @@
 package service
 
-import "context"
+import (
+	"context"
+	"discovery/discover"
+	"discovery/config"
+	"errors"
+)
 
 type Service interface {
 	// 健康检查接口
@@ -11,3 +16,28 @@ type Service interface {
 	DiscoveryService(ctx context.Context, serviceName string) ([]interface{}, error)
 }
 
+var ErrNotServiceInstances = errors.New("instances are not existed")
+
+type DiscoveryServiceImpl struct {
+	discoveryClient discover.DiscoveryClient
+}
+
+func NewDiscoveryServiceImpl(discoveryClient discover.DiscoveryClient) Service {
+	return &DiscoveryServiceImpl{
+		discoveryClient: discoveryClient,
+	}
+}
+
+func (*DiscoveryServiceImpl) SayHello() string {
+	return "Hello World!"
+}
+
+func (service *DiscoveryServiceImpl) DiscoveryService(ctx context.Context, serviceName string) ([]interface{}, error) {
+
+	instances := service.discoveryClient.DiscoverServices(serviceName, config.Logger)
+}
+
+// HealthCheck implement Service method
+func (*DiscoveryServiceImpl) HealthCheck() bool {
+	return true
+}

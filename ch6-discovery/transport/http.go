@@ -6,11 +6,50 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+
+	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/transport"
+	kithttp "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
 )
 
 var (
 	ErrorBadRequest = errors.New("invalid request parameter")
 )
+
+// MakeHttpHandler make http handler use mux
+func MakeHttpHandler(ctx context.Context, endpoints endpoint.DiscoveryEndpoints, logger log.Logger) http.Handler {
+	r := mux.NewRouter()
+
+	options := []kithttp.ServerOption{
+		kithttp.ServerErrorHandler(transport.NewLogErrorHandler(logger)),
+		kithttp.ServerErrorEncoder(encodeError),
+	}
+
+	r.Methods("GET").Path("/say-hello").Handler(kithttp.NewServer(
+		endpoints.SayHelloEndpoint,
+		decodeSayHelloRequest,
+		encodeJsonResponse,
+		options...,
+	))
+
+	r.Methods("GET").Path("/discovery").Handler(kithttp.NewServer(
+		endpoints.DiscoveryEndpoint,
+		decodeDiscoveryRequest,
+		encodeJsonResponse,
+		options...,
+	))
+
+	// create health check handler
+	r.Methods("GET").Path("/health").Handler(kithttp.NewServer(
+		endpoints.HealthCheckEndpoint,
+		decodeHealthCheckRequest,
+		encodeJsonResponse,
+		options...,
+	))
+
+	return r
+}
 
 func decodeSayHelloRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	return endpoint.SayHelloRequest{}, nil
