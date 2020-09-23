@@ -35,9 +35,14 @@ func main() {
 	errChan := make(chan error)
 
 	var discoveryClient discover.DiscoveryClient
-	// todo init discoveryClient
 
-	var svc = service.DiscoveryServiceImpl(discoveryClient)
+	discoveryClient, err := discover.NewMyDiscoverClient(*consulHost, *consulPort)
+	if err != nil {
+		config.Logger.Println("Get Consul client failed")
+		os.Exit(-1)
+	}
+
+	var svc = service.NewDiscoveryServiceImpl(discoveryClient)
 
 	sayHelloEndpoint := endpoint.MakeSayHelloEndpoint(svc)
 	discoveryEndpoint := endpoint.MakeDiscoveryEndpoint(svc)

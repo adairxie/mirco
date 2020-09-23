@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	"discovery/discover"
 	"discovery/config"
+	"discovery/discover"
 	"errors"
 )
 
@@ -35,6 +35,7 @@ func (*DiscoveryServiceImpl) SayHello() string {
 func (service *DiscoveryServiceImpl) DiscoveryService(ctx context.Context, serviceName string) ([]interface{}, error) {
 
 	instances := service.discoveryClient.DiscoverServices(serviceName, config.Logger)
+	return instances, nil
 }
 
 // HealthCheck implement Service method
