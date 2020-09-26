@@ -11,8 +11,8 @@ import (
 type InstanceInfo struct {
 	ID                string                     `json:"ID"`
 	Service           string                     `json:"Service,omitempty"` // 服务发现时返回的服务名
-	Name              string                     `json:"Name"`
-	Tags              []string                   `json:"Tags,omitempty"` // 标签，可用于进行服务过滤
+	Name              string                     `json:"Name,omitempty"`    // 服务名
+	Tags              []string                   `json:"Tags,omitempty"`    // 标签，可用于进行服务过滤
 	Address           string                     `json:"Address"`
 	Port              int                        `json:"Port"`
 	Meta              map[string]string          `json:"Meta,omitempty"`    // 元数据
@@ -94,9 +94,50 @@ func (consulClient *MyDiscoverClient) Register(serviceName, instanceId, healthCh
 }
 
 func (consulClient *MyDiscoverClient) DeRegister(instanceId string, logger *log.Logger) bool {
+	// 1.发送注销请求
+	req, err := http.NewRequest("PUT",
+		"http://"+consulClient.Host+":"+strconv.Itoa(consulClient.Port)+"/v1/agent/service/deregister/"+instanceId, nil)
+	client := http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		log.Println("Degister Service Error!")
+	} else {
+		resp.Body.Close()
+		if resp.StatusCode == 200 {
+			log.Println("Deregister Service Success")
+			return true
+		} else {
+			log.Println("Deregister Service Error!")
+		}
+	}
+
 	return false
 }
 
 func (consuleClient *MyDiscoverClient) DiscoverServices(serviceName string, logger *log.Logger) []interface{} {
+	// 1.从Consul中获取服务实例列表
+	req, err := http.NewRequest("GET",
+		"http://"+consuleClient.Host+":"+strconv.Itoa(consuleClient.Port)+"/v1/health/service/"+serviceName, nil)
+	client := http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		log.Println("Discover Service Error!")
+	} else if resp.StatusCode == 200 {
+		var serviceList []struct {
+			Service InstanceInfo `json:"Service"`
+		}
+		err = json.NewDecoder(resp.Body).Decode(&serviceList)
+		resp.Body.Close()
+		if err == nil {
+			instances := make([]interface{}, len(serviceList))
+			for i := 0; i < len(instances); i++ {
+				instances[i] = serviceList[i].Service
+			}
+			return instances
+		}
+	}
+
 	return nil
 }

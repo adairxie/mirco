@@ -33,8 +33,11 @@ func (*DiscoveryServiceImpl) SayHello() string {
 }
 
 func (service *DiscoveryServiceImpl) DiscoveryService(ctx context.Context, serviceName string) ([]interface{}, error) {
-
 	instances := service.discoveryClient.DiscoverServices(serviceName, config.Logger)
+
+	if instances == nil || len(instances) == 0 {
+		return nil, ErrNotServiceInstances
+	}
 	return instances, nil
 }
 
