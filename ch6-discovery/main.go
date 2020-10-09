@@ -36,7 +36,7 @@ func main() {
 
 	var discoveryClient discover.DiscoveryClient
 
-	discoveryClient, err := discover.NewMyDiscoverClient(*consulHost, *consulPort)
+	discoveryClient, err := discover.NewKitDiscoverClient(*consulHost, *consulPort)
 	if err != nil {
 		config.Logger.Println("Get Consul client failed")
 		os.Exit(-1)
