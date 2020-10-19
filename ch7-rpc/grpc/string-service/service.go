@@ -36,20 +36,20 @@ type Service interface {
 type StringService struct{}
 
 // Concat concat string a and b
-func (s StringService) Concat(ctx context.Context, req *pb.StringRequest) (*pb.StringReponse, error) {
+func (s StringService) Concat(ctx context.Context, req *pb.StringRequest) (*pb.StringResponse, error) {
 	if len(req.A)+len(req.B) > StrMaxSize {
-		response := pb.StringReponse{Ret: ""}
+		response := pb.StringResponse{Ret: ""}
 		return &response, nil
 	}
 
-	response := pb.StringReponse{Ret: req.A + req.B}
+	response := pb.StringResponse{Ret: req.A + req.B}
 	return &response, nil
 }
 
 // Diff common string between a and b
-func (s StringService) Diff(ctx context.Context, req *pb.StringRequest) (*pb.StringReponse, error) {
+func (s StringService) Diff(ctx context.Context, req *pb.StringRequest) (*pb.StringResponse, error) {
 	if len(req.A) < 1 || len(req.B) < 1 {
-		response := &pb.StringReponse{Ret: ""}
+		response := &pb.StringResponse{Ret: ""}
 		return response, nil
 	}
 
@@ -67,6 +67,6 @@ func (s StringService) Diff(ctx context.Context, req *pb.StringRequest) (*pb.Str
 		}
 	}
 
-	response := pb.StringReponse{Ret: res}
+	response := pb.StringResponse{Ret: res}
 	return &response, nil
 }

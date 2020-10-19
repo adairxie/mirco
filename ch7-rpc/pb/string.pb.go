@@ -84,7 +84,7 @@ func (x *StringRequest) GetB() string {
 	return ""
 }
 
-type StringReponse struct {
+type StringResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -93,8 +93,8 @@ type StringReponse struct {
 	Err string `protobuf:"bytes,2,opt,name=err,proto3" json:"err,omitempty"`
 }
 
-func (x *StringReponse) Reset() {
-	*x = StringReponse{}
+func (x *StringResponse) Reset() {
+	*x = StringResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_pb_string_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -102,13 +102,13 @@ func (x *StringReponse) Reset() {
 	}
 }
 
-func (x *StringReponse) String() string {
+func (x *StringResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StringReponse) ProtoMessage() {}
+func (*StringResponse) ProtoMessage() {}
 
-func (x *StringReponse) ProtoReflect() protoreflect.Message {
+func (x *StringResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_pb_string_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -120,19 +120,19 @@ func (x *StringReponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StringReponse.ProtoReflect.Descriptor instead.
-func (*StringReponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use StringResponse.ProtoReflect.Descriptor instead.
+func (*StringResponse) Descriptor() ([]byte, []int) {
 	return file_pb_string_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *StringReponse) GetRet() string {
+func (x *StringResponse) GetRet() string {
 	if x != nil {
 		return x.Ret
 	}
 	return ""
 }
 
-func (x *StringReponse) GetErr() string {
+func (x *StringResponse) GetErr() string {
 	if x != nil {
 		return x.Err
 	}
@@ -146,18 +146,18 @@ var file_pb_string_proto_rawDesc = []byte{
 	0x6f, 0x12, 0x02, 0x70, 0x62, 0x22, 0x2b, 0x0a, 0x0d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0c, 0x0a, 0x01, 0x41, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x01, 0x41, 0x12, 0x0c, 0x0a, 0x01, 0x42, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x01, 0x42, 0x22, 0x33, 0x0a, 0x0d, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x52, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x52, 0x65, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x65, 0x72, 0x72, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x65, 0x72, 0x72, 0x32, 0x71, 0x0a, 0x0d, 0x53, 0x74, 0x72, 0x69, 0x6e,
-	0x67, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x30, 0x0a, 0x06, 0x43, 0x6f, 0x6e, 0x63,
-	0x61, 0x74, 0x12, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e,
-	0x67, 0x52, 0x65, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x2e, 0x0a, 0x04, 0x44, 0x69,
-	0x66, 0x66, 0x12, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e,
-	0x67, 0x52, 0x65, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x01, 0x42, 0x22, 0x34, 0x0a, 0x0e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x52, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x03, 0x52, 0x65, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x65, 0x72, 0x72, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x65, 0x72, 0x72, 0x32, 0x73, 0x0a, 0x0d, 0x53, 0x74, 0x72, 0x69,
+	0x6e, 0x67, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x31, 0x0a, 0x06, 0x43, 0x6f, 0x6e,
+	0x63, 0x61, 0x74, 0x12, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69,
+	0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x2f, 0x0a, 0x04,
+	0x44, 0x69, 0x66, 0x66, 0x12, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x74, 0x72,
+	0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -174,14 +174,14 @@ func file_pb_string_proto_rawDescGZIP() []byte {
 
 var file_pb_string_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_pb_string_proto_goTypes = []interface{}{
-	(*StringRequest)(nil), // 0: pb.StringRequest
-	(*StringReponse)(nil), // 1: pb.StringReponse
+	(*StringRequest)(nil),  // 0: pb.StringRequest
+	(*StringResponse)(nil), // 1: pb.StringResponse
 }
 var file_pb_string_proto_depIdxs = []int32{
 	0, // 0: pb.StringService.Concat:input_type -> pb.StringRequest
 	0, // 1: pb.StringService.Diff:input_type -> pb.StringRequest
-	1, // 2: pb.StringService.Concat:output_type -> pb.StringReponse
-	1, // 3: pb.StringService.Diff:output_type -> pb.StringReponse
+	1, // 2: pb.StringService.Concat:output_type -> pb.StringResponse
+	1, // 3: pb.StringService.Diff:output_type -> pb.StringResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -208,7 +208,7 @@ func file_pb_string_proto_init() {
 			}
 		}
 		file_pb_string_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StringReponse); i {
+			switch v := v.(*StringResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -252,8 +252,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type StringServiceClient interface {
-	Concat(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringReponse, error)
-	Diff(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringReponse, error)
+	Concat(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringResponse, error)
+	Diff(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringResponse, error)
 }
 
 type stringServiceClient struct {
@@ -264,8 +264,8 @@ func NewStringServiceClient(cc grpc.ClientConnInterface) StringServiceClient {
 	return &stringServiceClient{cc}
 }
 
-func (c *stringServiceClient) Concat(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringReponse, error) {
-	out := new(StringReponse)
+func (c *stringServiceClient) Concat(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringResponse, error) {
+	out := new(StringResponse)
 	err := c.cc.Invoke(ctx, "/pb.StringService/Concat", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -273,8 +273,8 @@ func (c *stringServiceClient) Concat(ctx context.Context, in *StringRequest, opt
 	return out, nil
 }
 
-func (c *stringServiceClient) Diff(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringReponse, error) {
-	out := new(StringReponse)
+func (c *stringServiceClient) Diff(ctx context.Context, in *StringRequest, opts ...grpc.CallOption) (*StringResponse, error) {
+	out := new(StringResponse)
 	err := c.cc.Invoke(ctx, "/pb.StringService/Diff", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -284,18 +284,18 @@ func (c *stringServiceClient) Diff(ctx context.Context, in *StringRequest, opts 
 
 // StringServiceServer is the server API for StringService service.
 type StringServiceServer interface {
-	Concat(context.Context, *StringRequest) (*StringReponse, error)
-	Diff(context.Context, *StringRequest) (*StringReponse, error)
+	Concat(context.Context, *StringRequest) (*StringResponse, error)
+	Diff(context.Context, *StringRequest) (*StringResponse, error)
 }
 
 // UnimplementedStringServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedStringServiceServer struct {
 }
 
-func (*UnimplementedStringServiceServer) Concat(context.Context, *StringRequest) (*StringReponse, error) {
+func (*UnimplementedStringServiceServer) Concat(context.Context, *StringRequest) (*StringResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Concat not implemented")
 }
-func (*UnimplementedStringServiceServer) Diff(context.Context, *StringRequest) (*StringReponse, error) {
+func (*UnimplementedStringServiceServer) Diff(context.Context, *StringRequest) (*StringResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Diff not implemented")
 }
 

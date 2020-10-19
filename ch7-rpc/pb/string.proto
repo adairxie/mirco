@@ -3,8 +3,8 @@ syntax = "proto3";
 package pb;
 
 service StringService{
-    rpc Concat(StringRequest) returns (StringReponse) {}
-    rpc Diff(StringRequest) returns (StringReponse) {}
+    rpc Concat(StringRequest) returns (StringResponse) {}
+    rpc Diff(StringRequest) returns (StringResponse) {}
 }
 
 message StringRequest {
@@ -12,7 +12,7 @@ message StringRequest {
     string B = 2;
 }
 
-message StringReponse {
+message StringResponse {
     string Ret = 1;
     string err = 2;
 }
